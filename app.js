@@ -10,8 +10,6 @@ todoList.addEventListener("click", deleteAndCheck);
 
 // FUNCTIONS
 
-
-
 function addToDo(e) {
   e.preventDefault();
   const divTodo = document.createElement("div");
@@ -21,10 +19,20 @@ function addToDo(e) {
  let now = new Date()
  let todoDate = new Date(dateInput.valueAsDate)
 
- //console.log((todoDate.getDay() - now.getDay()) / (1000 * 60 * 60 * 24) + ' jours restants')
+ let restTime = (todoDate - now)
 
-  const list = document.createElement("li");  // Ajouter jours restant à la liste
-  list.innerText = todoInput.value + " " + (todoDate.getTime() - now.getTime()) / (1000 * 60 * 60 * 24) + ' jours restants';
+ //let h = restTime.getHours();
+// let m = restTime.getMinutes();
+
+ console.log(restTime)
+
+ //timeZer =  h + ':' + m
+
+ //console.log(Math.round((todoDate.getTime() - now.getTime()) / (1000 * 60 * 60 * 24)) + " " + Math.round((todoDate.getTime() - now.getTime()) / (1000 * 60 * 60 )) + " " + Math.round((todoDate.getTime() - now.getTime()) / (1000 * 60)) );
+
+  const list = document.createElement("li"); 
+                                           // Ajouter jours restant à la liste
+  list.innerText = todoInput.value + " | " + Math.round((todoDate.getTime() - now.getTime()) / (1000 * 60 * 60 * 24)) + ' jours ';
   list.classList.add("todo-item");
   divTodo.appendChild(list);
 
@@ -54,8 +62,7 @@ function addToDo(e) {
 
   todoList.appendChild(divTodo);
   todoInput.value = "";
-  
-  
+   
 }
 
 
