@@ -25,7 +25,14 @@ form {
   align-items: center;
 }
 
-form input,
+form #start {
+  padding: 0.5rem;
+  font-size: 1.4rem;
+  border: none;
+  background: #fff;
+}
+
+form #todo-input,
 form button {
   padding: 0.5rem;
   font-size: 1.5rem;

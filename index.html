@@ -18,9 +18,26 @@
     <header><h1>TouDoum List</h1></header>
     <form>
       <input type="text" id="todo-input" />
+      <input
+        type="date"
+        id="start"
+        name="trip-start"
+        value="2022-05-09"
+        min="2022-01-01"
+        max="1111111-12-31"
+      />
+
       <button id="todo-button" type="submit">
         <i class="fa-solid fa-circle-plus"></i>
       </button>
+      <div class="select-container">
+        <select name="Sort by" id="todo-select">
+          <option value="All">All</option>
+          <option value="To Do">To Do</option>
+          <option value="Doing">Doing</option>
+          <option value="Done">Done</option>
+        </select>
+      </div>
     </form>
     <div class="todo-container">
       <ul class="todo-list"></ul>
