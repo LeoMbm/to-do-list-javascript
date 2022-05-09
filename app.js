@@ -3,6 +3,7 @@
 const todoInput = document.querySelector("#todo-input");
 const todoButton = document.querySelector("#todo-button");
 const todoList = document.querySelector(".todo-list");
+//const dateInput = document.querySelector("#date-input")
 
 todoButton.addEventListener("click", addToDo);
 todoList.addEventListener("click", deleteAndCheck);
@@ -15,7 +16,7 @@ function addToDo(e) {
   divTodo.classList.add("divTodo");
 
   const list = document.createElement("li");
-  list.innerText = todoInput.value;
+  list.innerText = todoInput.value//, dateInput.value;
   list.classList.add("todo-item");
   divTodo.appendChild(list);
 
@@ -29,9 +30,27 @@ function addToDo(e) {
   deletedButton.classList.add("deleted-btn");
   divTodo.appendChild(deletedButton);
 
+  const descriptionButton = document.createElement("button");
+  descriptionButton.innerHTML = '<img src="description.png" class="description">';
+  descriptionButton.classList.add("description-btn");
+  divTodo.appendChild(descriptionButton);
+
   todoList.appendChild(divTodo);
   todoInput.value = "";
+ // dateInput.value = "";
+
+ // console.log(dateInput.value)
+
+// let now = new Date()
+// let todoDate = new Date(dateInput)
+
+// console.log((todoDate.getTime() - now.getTime()) / (1000 * 60 * 60 * 24) + ' jours restants')
+
 }
+
+
+
+
 
 function deleteAndCheck(e) {
   const item = e.target;
