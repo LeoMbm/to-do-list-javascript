@@ -26,7 +26,8 @@ form {
 }
 
 form #start {
-  padding: 0.5rem;
+  height: 100%;
+  padding: 0.48rem;
   font-size: 1.4rem;
   border: none;
   background: #fff;
@@ -49,6 +50,17 @@ form button {
 
 form button:hover {
   color: #153084;
+}
+
+.select-container {
+  padding: 0.5rem;
+}
+
+#todo-select {
+  padding: 0.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
 }
 
 .todo-container {
