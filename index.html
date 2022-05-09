@@ -16,9 +16,14 @@
   </head>
   <body>
     <header><h1>TouDoum List</h1></header>
+
+    <section class="filterBox">
+      <input type="text" class="filter" placeholder="Search Here..." id="search-input">
+
+    </section>
     <form>
       <input type="text" id="todo-input" />
-      <input type="date" id="date-input" text=""/>
+      <input type="date" id="date-input" required>
       <button id="todo-button" type="submit">
         <i class="fa-solid fa-circle-plus"></i>
       </button>
