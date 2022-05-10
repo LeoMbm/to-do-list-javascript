@@ -4,9 +4,12 @@ const todoInput = document.querySelector("#todo-input");
 const todoButton = document.querySelector("#todo-button");
 const todoList = document.querySelector(".todo-list");
 const dateInput = document.querySelector("#date-input");
+const filterOptions = document.querySelector("#todo-select");
 
 todoButton.addEventListener("click", addToDo);
 todoList.addEventListener("click", deleteAndCheck);
+
+filterOptions.addEventListener("click", filterTodo);
 
 // FUNCTIONS
 
@@ -24,9 +27,21 @@ function addToDo(e) {
 
   const list = document.createElement("li"); // Ajouter jours restant à la liste
   const remainingValue = todoInput.value ;
-  const remainingTime = Math.ceil(Math.abs((todoDate.getTime() - now.getTime()) / oneDay)) + " Days left";
+  const remainingTime = Math.ceil(Math.abs((todoDate.getTime() - now.getTime()) / oneDay)) ;
   console.log(remainingTime);
-  list.innerText = remainingValue + " | " + remainingTime
+  console.log(remainingValue)
+  if (remainingValue != "") {
+    list.innerText = remainingValue + " | " + remainingTime + " Days left"
+  }
+  else {
+    error
+  }
+  if (remainingTime != 19123) {
+  list.innerText = remainingValue + " | " + remainingTime + " Days left"
+  }
+  else {
+    error
+  }
   list.classList.add("todo-item");
   divTodo.appendChild(list);
 
@@ -88,36 +103,70 @@ function deleteAndCheck(e) {
   }
 }
 
-
 // FILTRES PAR NOM OU JOURS RESTANTS //
 
-document.querySelector("#search-input").addEventListener("input", filterList)
+document.querySelector("#search-input").addEventListener("input", filterList);
 
 function filterList() {
-  const searchInput = document.querySelector("#search-input")
-  const filter = searchInput.value.toLowerCase()
-  let listTodo = document.querySelectorAll(".divTodo")
-
+  const searchInput = document.querySelector("#search-input");
+  const filter = searchInput.value.toLowerCase();
+  let listTodo = document.querySelectorAll(".divTodo");
 
   listTodo.forEach((item) => {
     let text = item.textContent;
-    if(text.toLowerCase().includes(filter.toLowerCase())) {
+    if (text.toLowerCase().includes(filter.toLowerCase())) {
       item.style.display = "";
-    }
-    else {
+    } else {
       item.style.display = "none";
     }
-  })
-
+  });
 }
 
-let ordre = document.getElementById("ordre")
-
-let option = document.getElementsByTagName("option")
-
-forEach(divTodo) {
-  if (remainingTime < remainingTime) {
-    
-  }
+function filterTodo(e) {
+  let todos = todoList.childNodes;
+  todos.forEach(function (todo) {
+    switch (e.target.value) {
+      case "All":
+        todo.style.display = "flex";
+        break;
+      case "Done":
+        if (todo.classList.contains("completed")) {
+          todo.style.display = "flex";
+        } else {
+          todo.style.display = "none";
+        }
+        break;
+      case "To Do":
+        if (todo.classList.contains("completed")) {
+          todo.style.display = "none";
+        } else {
+          todo.style.display = "flex";
+        }
+        break;
+    }
+  });
 }
 
+
+
+let divTodo = document.querySelector(".divTodo")
+let todoItem = document.querySelectorAll(".todo-item")
+arr.push(todoItem)
+remainingValue = todoInput.value
+
+
+
+
+let collection = JSON.parse(window.localStorage.getItem('collection'))
+
+let input = {
+  Task: todoItem,
+  Description: divTodo,
+  Status: StatusValue,
+  DueDate: remainingTime,
+}
+collection.push(input)
+window.localStorage.setItem('collection', JSON.stringify(collection))
+window.location.reload();
+
+console.log(localStorage)
