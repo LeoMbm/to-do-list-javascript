@@ -50,10 +50,15 @@ header {
   }
 }
 
+@font-face {
+  font-family: "!Lestatic";
+  src: url(!LestaticCSS.ttf);     
+}
+
 
 header {
   font-size: 2rem;
-  font-family:fantasy;
+  font-family: "!Lestatic";
   color: rgb(255, 0, 0);
   text-shadow: 0 1px 5px rgb(30, 0, 35);
 }
