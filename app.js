@@ -4,9 +4,12 @@ const todoInput = document.querySelector("#todo-input");
 const todoButton = document.querySelector("#todo-button");
 const todoList = document.querySelector(".todo-list");
 const dateInput = document.querySelector("#date-input");
+const filterOptions = document.querySelector("#todo-select");
 
 todoButton.addEventListener("click", addToDo);
 todoList.addEventListener("click", deleteAndCheck);
+
+filterOptions.addEventListener("click", filterTodo);
 
 // FUNCTIONS
 
@@ -24,7 +27,7 @@ function addToDo(e) {
 
   const list = document.createElement("li"); // Ajouter jours restant à la liste
   let remainingTime =
-  todoInput.value +
+    todoInput.value +
     " | " +
     Math.ceil(Math.abs((todoDate.getTime() - now.getTime()) / oneDay)) +
     " Days left";
@@ -60,22 +63,19 @@ function addToDo(e) {
   todoList.appendChild(divTodo);
   todoInput.value = "";
 
-   let divTodox = []
+  let divTodox = [];
 
-  divTodox.push(divTodo)
-  divTodox.push(list)
-  divTodox.push(validatedButton)
-  divTodox.push(deletedButton)
-  divTodox.push(descriptionButton)
-  
-  let divTodo_serialized = JSON.stringify(divTodox)
-  console.log(divTodo_serialized)
-  localStorage.setItem("divTodox", divTodo_serialized)
+  divTodox.push(divTodo);
+  divTodox.push(list);
+  divTodox.push(validatedButton);
+  divTodox.push(deletedButton);
+  divTodox.push(descriptionButton);
 
+  let divTodo_serialized = JSON.stringify(divTodox);
+  console.log(divTodo_serialized);
+  localStorage.setItem("divTodox", divTodo_serialized);
 
-  console.log(localStorage)
-
-
+  console.log(localStorage);
 }
 
 function deleteAndCheck(e) {
@@ -91,25 +91,46 @@ function deleteAndCheck(e) {
   }
 }
 
-
 // FILTRES PAR NOM OU JOURS RESTANTS //
 
-document.querySelector("#search-input").addEventListener("input", filterList)
+document.querySelector("#search-input").addEventListener("input", filterList);
 
 function filterList() {
-  const searchInput = document.querySelector("#search-input")
-  const filter = searchInput.value.toLowerCase()
-  let listTodo = document.querySelectorAll(".divTodo")
-
+  const searchInput = document.querySelector("#search-input");
+  const filter = searchInput.value.toLowerCase();
+  let listTodo = document.querySelectorAll(".divTodo");
 
   listTodo.forEach((item) => {
     let text = item.textContent;
-    if(text.toLowerCase().includes(filter.toLowerCase())) {
+    if (text.toLowerCase().includes(filter.toLowerCase())) {
       item.style.display = "";
-    }
-    else {
+    } else {
       item.style.display = "none";
     }
-  })
+  });
+}
 
+function filterTodo(e) {
+  let todos = todoList.childNodes;
+  todos.forEach(function (todo) {
+    switch (e.target.value) {
+      case "All":
+        todo.style.display = "flex";
+        break;
+      case "Done":
+        if (todo.classList.contains("completed")) {
+          todo.style.display = "flex";
+        } else {
+          todo.style.display = "none";
+        }
+        break;
+      case "To Do":
+        if (todo.classList.contains("completed")) {
+          todo.style.display = "none";
+        } else {
+          todo.style.display = "flex";
+        }
+        break;
+    }
+  });
 }
