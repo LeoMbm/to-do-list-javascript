@@ -20,10 +20,23 @@
     
     <header><h1>TouDoum List</h1></header>
 
-    <section class="filterBox">
+  <section class="filtered">
+    <label for="ordre">Ordre</label>
+    <br>
+      <select name="ordre" id="ordre">
+        <option value="croissant">
+          Croissant
+        </option>
+        <option value="décroissant">
+          Décroissant
+        </option>
+      </select>  
       <input type="text" class="filter" placeholder="Search Here..." id="search-input">
+  </section>
 
-    </section>
+    
+      
+
     <form>
       <input type="text" id="todo-input" />
       <input type="date" id="date-input" required>

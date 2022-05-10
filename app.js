@@ -23,13 +23,10 @@ function addToDo(e) {
   //console.log((todoDate.getDay() - now.getDay()) / (1000 * 60 * 60 * 24) + ' jours restants')
 
   const list = document.createElement("li"); // Ajouter jours restant à la liste
-  let remainingTime =
-  todoInput.value +
-    " | " +
-    Math.ceil(Math.abs((todoDate.getTime() - now.getTime()) / oneDay)) +
-    " Days left";
+  const remainingValue = todoInput.value ;
+  const remainingTime = Math.ceil(Math.abs((todoDate.getTime() - now.getTime()) / oneDay)) + " Days left";
   console.log(remainingTime);
-  list.innerText = remainingTime;
+  list.innerText = remainingValue + " | " + remainingTime
   list.classList.add("todo-item");
   divTodo.appendChild(list);
 
@@ -59,7 +56,7 @@ function addToDo(e) {
 
   todoList.appendChild(divTodo);
   todoInput.value = "";
-
+/*
    let divTodox = []
 
   divTodox.push(divTodo)
@@ -74,7 +71,7 @@ function addToDo(e) {
 
 
   console.log(localStorage)
-
+*/
 
 }
 
@@ -113,3 +110,14 @@ function filterList() {
   })
 
 }
+
+let ordre = document.getElementById("ordre")
+
+let option = document.getElementsByTagName("option")
+
+forEach(divTodo) {
+  if (remainingTime < remainingTime) {
+    
+  }
+}
+

@@ -171,10 +171,20 @@ form button:hover {
   opacity: 0.5;
 }
 
+.filtered {
+  display: flex;
+}
+
 .filter {
- margin-left: 40%;
+ 
   width: 200px;
   height: 30px;
   background-color: rgb(113, 1, 18);
   box-shadow: 0 3px 5px black;
+}
+
+#ordre {
+  margin-left: 5%;
+  background-color: rgb(219, 56, 56);
+  border-style: none;
 }
