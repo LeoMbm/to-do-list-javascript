@@ -226,18 +226,20 @@ form button:hover {
   color: white;
 }
 
-.filter {
+header {
   animation-duration : 3s;
   animation-name: slide;
-  animation-delay: 2s;
+  animation-delay: 0.1s;
 }
 
 
 @keyframes slide {
   0% {
-    margin-left: -100px;
+    margin-left: -15%;
   }
-    100% { margin-left: 40%; }
+    50% { margin-left: 40%; }
+}
+    100% { margin-left: 0%; }
 }
 
 
