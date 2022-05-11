@@ -4,17 +4,13 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Josefin Sans";
 }
 
 body {
   background-color: #ccc;
   min-height: 100vh;
   position: relative;
-  background-image: url(bgred.jpeg);
-  background-size: cover;
-}
-
-body {
   animation-duration: 5s;
   animation-name: blured;
 }
@@ -58,7 +54,7 @@ header {
 header {
   font-size: 2rem;
   font-family: "!Lestatic";
-  color: rgb(255, 0, 0);
+  color: royalblue;
   text-shadow: 0 1px 5px rgb(30, 0, 35);
 }
 
@@ -195,12 +191,12 @@ form button:hover {
 #todo-input,
 #todo-button,
 #todo-select {
-  background-color: rgb(255, 152, 152);
+  background-color: rgb(255, 255, 255);
   border: 2px solid rgb(0, 0, 0);
 }
 
 #date-input {
-  background-color: rgb(180, 0, 15);
+  background-color: rgb(255, 255, 255);
   border: 1px solid rgb(0, 0, 0);
 }
 
@@ -222,9 +218,8 @@ form button:hover {
   margin-left: 40%;
   width: 200px;
   height: 30px;
-  background-color: rgb(113, 1, 18);
+  background-color: rgb(255, 255, 255);
   box-shadow: 0 3px 5px black;
-  color: white;
 }
 
 header {
@@ -247,7 +242,7 @@ header {
 }
 
 .filter:hover {
-  box-shadow: 0 0 20px red;
+  box-shadow: 0 0 20px royalblue;
 }
 
 /* ****************** FIRE ****************** */
