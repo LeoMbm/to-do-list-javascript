@@ -74,22 +74,34 @@ function addToDo(e) {
 
   todoList.appendChild(divTodo);
   todoInput.value = "";
-  /*
-   let divTodox = []
 
-  divTodox.push(divTodo)
-  divTodox.push(list)
-  divTodox.push(validatedButton)
-  divTodox.push(deletedButton)
-  divTodox.push(descriptionButton)
-  
-  let divTodo_serialized = JSON.stringify(divTodox)
-  console.log(divTodo_serialized)
-  localStorage.setItem("divTodox", divTodo_serialized)
+  // ************* LOCALSTORAGE *************** //
 
+  let modify = document.querySelectorAll(".modify");
 
-  console.log(localStorage)
-*/
+  let divTodox = {
+    todo: remainingValue,
+    time: remainingTime + " Days left",
+    val: validatedButton,
+    del: deletedButton,
+    des: descriptionButton,
+    mod: modify,
+  };
+
+  let todoStorage = JSON.parse(localStorage.getItem("divAll"));
+  console.log(todoStorage);
+
+  if (todoStorage) {
+    todoStorage.push(divTodox);
+    localStorage.setItem("divAll", JSON.stringify(todoStorage));
+    console.log(todoStorage);
+  } else {
+    todoStorage = [];
+    todoStorage.push(divTodox);
+    localStorage.setItem("divAll", JSON.stringify(todoStorage));
+    console.log(todoStorage);
+  }
+  sole.log(localStorage);
 }
 
 function deleteAndCheck(e) {
@@ -150,22 +162,3 @@ function filterTodo(e) {
     }
   });
 }
-
-let divTodo = document.querySelector(".divTodo");
-let todoItem = document.querySelectorAll(".todo-item");
-arr.push(todoItem);
-remainingValue = todoInput.value;
-
-let collection = JSON.parse(window.localStorage.getItem("collection"));
-
-let input = {
-  Task: todoItem,
-  Description: divTodo,
-  Status: StatusValue,
-  DueDate: remainingTime,
-};
-collection.push(input);
-window.localStorage.setItem("collection", JSON.stringify(collection));
-window.location.reload();
-
-console.log(localStorage);
