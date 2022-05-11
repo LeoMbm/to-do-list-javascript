@@ -101,7 +101,7 @@ function addToDo(e) {
     localStorage.setItem("divAll", JSON.stringify(todoStorage));
     console.log(todoStorage);
   }
-  sole.log(localStorage);
+  console.log(localStorage);
 }
 
 function deleteAndCheck(e) {
