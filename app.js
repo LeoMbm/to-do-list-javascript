@@ -104,6 +104,8 @@ function addToDo(e) {
     localStorage.setItem("divAll", JSON.stringify(todoStorage))
     console.log(todoStorage) 
   }
+  
+
 /*
    window.localStorage.setItem('divTodox', JSON.stringify(divTodox));
    
