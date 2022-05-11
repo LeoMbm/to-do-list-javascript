@@ -31,14 +31,14 @@ function addToDo(e) {
   const remainingTime = Math.ceil(
     Math.abs((todoDate.getTime() - now.getTime()) / oneDay)
   );
-  console.log(remainingTime);
-  console.log(remainingValue);
+  //console.log(remainingTime);
+  //console.log(remainingValue);
   if (remainingValue != "") {
     list.innerText = remainingValue;
   } else {
     error;
   }
-  if (remainingTime != 19123) {
+  if (remainingTime != 19124) {
     listDate.innerText = remainingTime + " Days left";
   } else {
     error;
@@ -74,23 +74,53 @@ function addToDo(e) {
 
   todoList.appendChild(divTodo);
   todoInput.value = "";
-  /*
-   let divTodox = []
 
-  divTodox.push(divTodo)
-  divTodox.push(list)
-  divTodox.push(validatedButton)
-  divTodox.push(deletedButton)
-  divTodox.push(descriptionButton)
-  
+
+
+  // ************* LOCALSTORAGE *************** //
+
+  let modify = document.querySelectorAll(".modify")
+
+  let divTodox = {
+    todo: remainingValue,
+    time: remainingTime + " Days left",
+    val: validatedButton,
+    del: deletedButton,
+    des: descriptionButton,
+    mod: modify,
+  }
+
+  let todoStorage = JSON.parse(localStorage.getItem("divAll"))
+  console.log(todoStorage)
+
+  if (todoStorage) {
+    todoStorage.push(divTodox)
+    localStorage.setItem("divAll", JSON.stringify(todoStorage))
+    console.log(todoStorage)
+  }
+  else {
+    todoStorage = []
+    todoStorage.push(divTodox)
+    localStorage.setItem("divAll", JSON.stringify(todoStorage))
+    console.log(todoStorage) 
+  }
+/*
+   window.localStorage.setItem('divTodox', JSON.stringify(divTodox));
+   
+
   let divTodo_serialized = JSON.stringify(divTodox)
   console.log(divTodo_serialized)
   localStorage.setItem("divTodox", divTodo_serialized)
+  localStorage.getItem("divTodox")
 
-
+  //console.log(collection)
+  
+  console.log(divTodox)
   console.log(localStorage)
-*/
+  */
 }
+
+
 
 function deleteAndCheck(e) {
   const item = e.target;
@@ -113,15 +143,14 @@ function filterList() {
   const searchInput = document.querySelector("#search-input");
   const filter = searchInput.value.toLowerCase();
   let listTodo = document.querySelectorAll(".divTodo");
-  //let divTodo = document.querySelector(".divTodo")
+ 
 
   listTodo.forEach((item) => {
     let text = item.textContent;
     if (text.toLowerCase().includes(filter.toLowerCase())) {
       item.style.display = "";
     } else {
-      //divTodo.style.display = "none";
-      item.style.display = "none";
+      item.style.display = "none"
     }
   });
 }
@@ -150,22 +179,30 @@ function filterTodo(e) {
     }
   });
 }
+ 
+/*
 
 let divTodo = document.querySelector(".divTodo");
 let todoItem = document.querySelectorAll(".todo-item");
-arr.push(todoItem);
+
 remainingValue = todoInput.value;
+remainingTime = dateInput.valueAsDate;
 
 let collection = JSON.parse(window.localStorage.getItem("collection"));
+
+collection = []
 
 let input = {
   Task: todoItem,
   Description: divTodo,
-  Status: StatusValue,
+  Status: remainingValue,
   DueDate: remainingTime,
 };
 collection.push(input);
 window.localStorage.setItem("collection", JSON.stringify(collection));
-window.location.reload();
+
+localStorage.removeItem(divTodo)
+
 
 console.log(localStorage);
+*/
