@@ -26,24 +26,28 @@ function addToDo(e) {
   //console.log((todoDate.getDay() - now.getDay()) / (1000 * 60 * 60 * 24) + ' jours restants')
 
   const list = document.createElement("li"); // Ajouter jours restant à la liste
+  const listDate = document.createElement("li");
+
   const remainingValue = todoInput.value ;
   const remainingTime = Math.ceil(Math.abs((todoDate.getTime() - now.getTime()) / oneDay)) ;
   console.log(remainingTime);
   console.log(remainingValue)
   if (remainingValue != "") {
-    list.innerText = remainingValue + " | " + remainingTime + " Days left"
+    list.innerText = remainingValue 
   }
   else {
     error
   }
   if (remainingTime != 19123) {
-  list.innerText = remainingValue + " | " + remainingTime + " Days left"
+  listDate.innerText = remainingTime + " Days left"
   }
   else {
     error
   }
+  listDate.classList.add("date-item")
   list.classList.add("todo-item");
   divTodo.appendChild(list);
+  divTodo.appendChild(listDate)
 
   const validatedButton = document.createElement("button");
   validatedButton.innerHTML = '<i class="fa-solid fa-circle-check"></i>';
@@ -111,15 +115,18 @@ function filterList() {
   const searchInput = document.querySelector("#search-input");
   const filter = searchInput.value.toLowerCase();
   let listTodo = document.querySelectorAll(".divTodo");
+  //let divTodo = document.querySelector(".divTodo")
 
   listTodo.forEach((item) => {
     let text = item.textContent;
     if (text.toLowerCase().includes(filter.toLowerCase())) {
       item.style.display = "";
     } else {
+      //divTodo.style.display = "none";
       item.style.display = "none";
     }
   });
+
 }
 
 function filterTodo(e) {
