@@ -8,7 +8,6 @@ const filterOptions = document.querySelector("#todo-select");
 
 todoButton.addEventListener("click", addToDo);
 todoList.addEventListener("click", deleteAndCheck);
-
 filterOptions.addEventListener("click", filterTodo);
 
 // FUNCTIONS
@@ -31,7 +30,7 @@ function addToDo(e) {
     " | " +
     Math.ceil(Math.abs((todoDate.getTime() - now.getTime()) / oneDay)) +
     " Days left";
-  console.log(remainingTime);
+  // console.log(remainingTime);
   list.innerText = remainingTime;
   list.classList.add("todo-item");
   divTodo.appendChild(list);
@@ -133,4 +132,15 @@ function filterTodo(e) {
         break;
     }
   });
+}
+
+// LOCAL STORAGE
+
+todoButton.addEventListener("click", localSave);
+todoInput.addEventListener("click", localSave);
+
+function localSave() {
+  const value = todoInput.value;
+
+  // console.log(value);
 }
